@@ -1,0 +1,17 @@
+<!-- All Polymer web components must begin with the dom-module tag-->
+<dom-module id="hello-world">
+	<!--HTML that makes up the component, this is referred to as the local DOM-->
+	<template>
+		<!-- {{}} is the syntax for 2-way data binding in Polymer, :: is used for data binding with a native element-->
+		<input type="text" value="{{name::keyup}}">
+		<!-- [[attribute]] is used to access attributes specified on the component in the html-->
+		<h1>DOMo Arigato, [[name]]</h1>
+	</template>
+	<!-- JS that makes up the component-->
+	<script>
+		//pass an object to polymer that defines the component
+		Polymer({
+			is: 'hello-world'
+		})
+	</script>
+</dom-module>

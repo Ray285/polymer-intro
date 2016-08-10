@@ -1,0 +1,22 @@
+{
+  "name": "html5-boilerplate",
+  "description": "polymer test app",
+  "main": "index.html",
+  "authors": [
+    "Raymond Lemon <Rlemon285@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "polymer",
+    "gulp"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
