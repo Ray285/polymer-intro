@@ -1,0 +1,54 @@
+<dom-module id="lifecycle-element">
+	<template>
+		<button id="btn">Hello World</button>
+	</template>
+	<script>
+		Polymer({
+			is: 'lifecycle-element',
+			//life cycle phases, most map directly to web components
+			//created_callback -> created
+			//called when component has been Registered
+			created: function () {
+				//this will refer to the polymer element
+				this.log('created');
+				this.addEventListener('click', function () {
+					this.remove();//trigger detached phase
+				});
+			},
+			//specific to polymer, not from web components API
+			//called when the local DOM has been fully processed
+			ready: function () {
+				this.log('ready');
+				//we can access local DOM at this point, all nested ready events will fire before the parent
+				this.ticker = setInterval(this.tick.bind(this), 500);
+
+			},
+			//attached_callback -> attached
+			//called when polymer element is in the DOM
+			attached: function () {
+				this.log('attached');
+			},
+			//detached_callback -> detached
+			//called when the polymer element is removed in the DOM, used for clean up
+			detached: function () {
+				this.log('detached');
+				clearInterval(this.ticker);//stops ticker interval
+			},
+			attributeChanged: function (name, oldValue, newValue) {
+				console.log('%s was changed to %s from %s', name, newValue, oldValue);
+			},
+			tick: function () {
+				this.setAttribute('data-id', Math.random());
+			},
+			updateAttribute: function (cycle) {
+				this.setAttribute('class', cycle);
+			},
+			log: function (cycle) {
+				console.log('****** ' + cycle);
+				//local DOM can be accessed through this.$
+				this.$ && console.dir(this.$.btn);
+				this.updateAttribute(cycle);
+			}
+		})
+	</script>
+</dom-module>
