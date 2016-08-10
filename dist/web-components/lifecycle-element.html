@@ -1,6 +1,6 @@
 <dom-module id="lifecycle-element">
 	<template>
-		<button id="btn">Hello World</button>
+		<button id="btn">Stop ticker</button>
 	</template>
 	<script>
 		Polymer({
@@ -49,6 +49,6 @@
 				this.$ && console.dir(this.$.btn);
 				this.updateAttribute(cycle);
 			}
-		})
+		});
 	</script>
 </dom-module>
