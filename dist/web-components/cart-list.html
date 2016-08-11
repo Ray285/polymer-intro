@@ -1,0 +1,31 @@
+<dom-module id="cart-list">
+	<template>
+		<template is="dom-repeat" items="{{foods}}">
+			<div>
+				<button on-click="subtract">-</button>
+				<button on-click="add">+</button>
+				<span>{{item.qty}} - {{item.name}}  (food # {{index}})</span>
+			</div>
+		</template>
+	</template>
+	<script>
+		Polymer({
+			is: 'cart-list',
+			ready: function () {
+				this.foods = [
+					{name: 'Pizza', qty: 1},
+					{name: 'Boneless Wings', qty: 1},
+					{name: 'Salad', qty: 1}
+				];
+			},
+			add: function (e) {
+				e.model.set('item.qty', e.model.item.qty + 1);
+				console.log('%s Item Qty: %d', e.model.item.name, e.model.item.qty);
+			},
+			subtract: function (e) {
+				e.model.set('item.qty', e.model.item.qty - 1);
+				console.log('%s Item Qty: %d', e.model.item.name, e.model.item.qty);
+			}
+		});
+	</script>
+</dom-module>
