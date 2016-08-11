@@ -23,6 +23,7 @@
 	<link rel="import" href="web-components/child-element.html">
 	<link rel="import" href="web-components/observer-element.html">
 	<link rel="import" href="web-components/event-listener.html">
+	<link rel="import" href="web-components/my-range.html">
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 	<body>
@@ -30,8 +31,11 @@
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
+		<!-- Custom event firing -->
+		<my-range value="10"></my-range>
+		
 		<!-- Event handlers -->
-		<listener-element></listener-element>
+		<!--<listener-element></listener-element>-->
 
 		<!-- Property change observers -->
 		<!--<observer-element></observer-element>-->
@@ -61,22 +65,11 @@
 		<!--<h3>fully isolated from the rest of the document</h3>-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<script>
+			document.querySelector('my-range').addEventListener('valueChanged', function (e) {
+				console.log(e.detail.increased);
+			});
+		</script>
 		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
