@@ -1,0 +1,24 @@
+<dom-module id="my-button">
+	<template>
+		<!-- Let any nested elements pass through into our template , content is used to access child elements-->
+		<content>
+
+		</content>
+	</template>
+	<script>
+		Polymer({
+			is: 'my-button',
+			extends: 'button',
+			created: function () {
+				this.style.color = 'red';
+				this.addEventListener('click', this.clickHandler);
+			},
+			ready: function () {
+				console.log('I gots a button!');
+			},
+			clickHandler: function () {
+				this.textContent = this.textContent.split('').reverse().join('');
+			}
+		});
+	</script>
+</dom-module>
